@@ -51,7 +51,11 @@ if ingredients_list:
        
         st.subheader('Nutritional Information on ' + chosen_fruit)
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + search_on)
-        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
+        fruityvice_data = fruityvice_response.json()
+        fv_df = pd.json_normalize(fruityvice_data)  # Flatten JSON if necessary
+        st.dataframe(fv_df, use_container_width=True)
+       # fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + search_on)
+      #  fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
         
    # st.write(ingredients_string)
 
