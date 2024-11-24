@@ -74,18 +74,7 @@ if ingredients_list2:
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
         st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
         
-    st.write(ingredients_string)
-
-    my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
-         values ('""" + ingredients_string + """','"""+name_on_order+ """')"""
-
-    st.write(my_insert_stmt)
-    #if ingredients_string:
-       # session.sql(my_insert_stmt).collect()
-      #  import streamlit as st
-      #  st.success('Smoothie order is created ', icon="✅")
-    time_to_insert = st.button('Submit Order')
-
+  
 
 
 
